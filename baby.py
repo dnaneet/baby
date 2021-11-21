@@ -34,16 +34,22 @@ df["time"] = pd.to_datetime(df['Timestamp']).apply(lambda x: x.time())
 st.title("Baby Reporting")
 st.markdown("Baby data is reported via this page.")
 
+selection = st.sidebar.radio('Select ', ["Charts", "Tables"])
 
-st.markdown("### Feeding Pattern")
-#st.table(df["Feeding"])
 
-fig = px.scatter(df[df["Feeding"]!="No"], x = "Timestamp", y = "Feeding", hover_data = ["Feeding Volume [Oz] (approximate)", "Feeding duration (minutes)"]) #, size = "Enrollment", color = "Course"
-fig.update_yaxes(range=[0,3])
-st.plotly_chart(fig)
+if selection == "Charts":
+    st.markdown("### Feeding Pattern")
+    #st.table(df["Feeding"])
 
-st.markdown("### Diaper Pattern")
-#st.table(df["Pump?"])
-fig = px.scatter(df, x = "Timestamp", y = "Diaper", hover_data = ["Diaper",]) #, size = "Enrollment", color = "Course"
-fig.update_yaxes(range=[0,3])
-st.plotly_chart(fig)
+    fig = px.scatter(df[df["Feeding"]!="No"], x = "Timestamp", y = "Feeding", hover_data = ["Feeding Volume [Oz] (approximate)", "Feeding duration (minutes)"]) #, size = "Enrollment", color = "Course"
+    fig.update_yaxes(range=[0,3])
+    st.plotly_chart(fig)
+
+    st.markdown("### Diaper Pattern")
+    #st.table(df["Pump?"])
+    fig = px.scatter(df, x = "Timestamp", y = "Diaper", hover_data = ["Diaper",]) #, size = "Enrollment", color = "Course"
+    fig.update_yaxes(range=[0,3])
+    st.plotly_chart(fig)
+if selection == "Tables":
+    st.markdown("### Feeding Pattern")
+    #st.table(df["Feeding"])
