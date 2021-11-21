@@ -52,4 +52,5 @@ if selection == "Charts":
     st.plotly_chart(fig)
 if selection == "Tables":
     st.markdown("### Feeding Pattern")
-    #st.table(df["Feeding"])
+    st.table(df[["date", "time", "Feeding"]])
+
