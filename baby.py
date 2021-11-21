@@ -32,12 +32,11 @@ df["time"] = pd.to_datetime(df['Timestamp']).apply(lambda x: str(x.time()))
 
 
 st.title("Baby Reporting")
-st.markdown("Baby data is reported via this page.")
-
 selection = st.sidebar.radio('Select ', ["Charts", "Tables"])
 
 
 if selection == "Charts":
+    st.markdown("Baby data is reported via charts on this page.")
     st.markdown("### Feeding Pattern")
     #st.table(df["Feeding"])
 
@@ -51,6 +50,7 @@ if selection == "Charts":
     fig.update_yaxes(range=[0,3])
     st.plotly_chart(fig)
 if selection == "Tables":
+    st.markdown("Baby data is reported via tables on this page.")
     st.markdown("### Feeding Pattern")
     st.table(df[["date", "time", "Feeding"]])
 
