@@ -54,3 +54,6 @@ if selection == "Tables":
     st.markdown("### Feeding Pattern")
     st.table(df[["date", "time", "Feeding"]])
 
+    st.markdown("### Diaper Pattern")
+    st.table(df[["date", "time", "Diaper"]])
+
