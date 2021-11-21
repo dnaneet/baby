@@ -34,4 +34,4 @@ st.title("Baby Reporting")
 st.markdown("Baby data is reported via this page.")
 
 
-print(df.cols)
+st.write(df.cols)
