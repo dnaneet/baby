@@ -8,7 +8,7 @@ Original file is located at
 """
 
 import pandas as pd
-import plotly
+import plotly.express as px
 import numpy as np
 import streamlit as st
 
@@ -40,7 +40,8 @@ st.table(df["Feeding"])
 
 fig_feed = px.scatter(df[df["Feeding"]!="No"], x = "Timestamp", y = "Feeding", hover_data = ["Feeding Volume [Oz] (approximate)", "Feeding duration (minutes)"]) #, size = "Enrollment", color = "Course"
 fig_feed.update_yaxes(range=[0,3])
-st.plotly_chart(fig_feed)
+fig_feed.show()
+#st.plotly_chart(fig_feed)
 #st.plotly_chart(fig_feed)
 
 st.markdown("### Pumping Pattern")
