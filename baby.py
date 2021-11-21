@@ -40,8 +40,7 @@ st.table(df["Feeding"])
 
 fig = px.scatter(df[df["Feeding"]!="No"], x = "Timestamp", y = "Feeding", hover_data = ["Feeding Volume [Oz] (approximate)", "Feeding duration (minutes)"]) #, size = "Enrollment", color = "Course"
 fig.update_yaxes(range=[0,3])
-fig.show()
-#st.plotly_chart(fig_feed)
+st.plotly_chart(fig)
 #st.plotly_chart(fig_feed)
 
 st.markdown("### Pumping Pattern")
