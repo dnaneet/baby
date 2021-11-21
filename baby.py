@@ -37,4 +37,4 @@ Reporting
 st.title("Baby Reporting")
 st.markdown("Baby data is reported via this page.")
 
-st.write(df)
+st.dataframe(df)
