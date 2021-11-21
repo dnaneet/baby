@@ -30,11 +30,6 @@ df["date"].tail(1)
 df["time"].tail(1)
 
 
-"""
-Reporting
-"""
-
 st.title("Baby Reporting")
 st.markdown("Baby data is reported via this page.")
 
-df
