@@ -33,5 +33,10 @@ df["time"] = pd.to_datetime(df['Timestamp']).apply(lambda x: x.time())
 st.title("Baby Reporting")
 st.markdown("Baby data is reported via this page.")
 
+
+st.markdown("### Feeding Pattern")
+st.table(df[["Feeding, Feeding Volume [Oz] (approximate)"]])
+
+st.markdown("### Pumping Pattern")
 st.table(df["Pump?"])
 
