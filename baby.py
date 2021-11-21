@@ -38,9 +38,9 @@ st.markdown("Baby data is reported via this page.")
 st.markdown("### Feeding Pattern")
 st.table(df["Feeding"])
 
-fig_feed = px.scatter(df[df["Feeding"]!="No"], x = "Timestamp", y = "Feeding", hover_data = ["Feeding Volume [Oz] (approximate)", "Feeding duration (minutes)"]) #, size = "Enrollment", color = "Course"
-fig_feed.update_yaxes(range=[0,3])
-fig_feed.show()
+fig = px.scatter(df[df["Feeding"]!="No"], x = "Timestamp", y = "Feeding", hover_data = ["Feeding Volume [Oz] (approximate)", "Feeding duration (minutes)"]) #, size = "Enrollment", color = "Course"
+fig.update_yaxes(range=[0,3])
+fig.show()
 #st.plotly_chart(fig_feed)
 #st.plotly_chart(fig_feed)
 
