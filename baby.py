@@ -33,5 +33,5 @@ df["time"] = pd.to_datetime(df['Timestamp']).apply(lambda x: x.time())
 st.title("Baby Reporting")
 st.markdown("Baby data is reported via this page.")
 
+df["Pump?"]
 
-st.table(df)
