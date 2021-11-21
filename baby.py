@@ -36,13 +36,14 @@ st.markdown("Baby data is reported via this page.")
 
 
 st.markdown("### Feeding Pattern")
-st.table(df["Feeding"])
+#st.table(df["Feeding"])
 
 fig = px.scatter(df[df["Feeding"]!="No"], x = "Timestamp", y = "Feeding", hover_data = ["Feeding Volume [Oz] (approximate)", "Feeding duration (minutes)"]) #, size = "Enrollment", color = "Course"
 fig.update_yaxes(range=[0,3])
 st.plotly_chart(fig)
-#st.plotly_chart(fig_feed)
 
-st.markdown("### Pumping Pattern")
-st.table(df["Pump?"])
-
+st.markdown("### Diaper Pattern")
+#st.table(df["Pump?"])
+fig = px.scatter(df, x = "Timestamp", y = "Diaper", hover_data = ["Diaper",]) #, size = "Enrollment", color = "Course"
+fig.update_yaxes(range=[0,3])
+st.plotly_chart(fig)
