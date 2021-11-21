@@ -26,10 +26,12 @@ df["date"] = pd.to_datetime(df['Timestamp']).apply(lambda x: x.date())
 df["time"] = pd.to_datetime(df['Timestamp']).apply(lambda x: x.time())
 
 
-df["date"].tail(1)
-df["time"].tail(1)
+#df["date"].tail(1)
+#df["time"].tail(1)
 
 
 st.title("Baby Reporting")
 st.markdown("Baby data is reported via this page.")
 
+
+print(df)
