@@ -34,4 +34,7 @@ df["time"].tail(1)
 Reporting
 """
 
-st.markdown("Baby Reporting")
+st.title("Baby Reporting")
+st.markdown("Baby data is reported via this page.")
+
+st.write(df)
