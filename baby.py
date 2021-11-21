@@ -24,7 +24,7 @@ df["Feeding duration (minutes)"] = df["Feeding duration (minutes)"].fillna(0)
 df["Diaper"] = df["Diaper"].fillna("not reported")
 df["Most recently used breast"] = df["Most recently used breast"].fillna("not reported")
 df["date"] = pd.to_datetime(df['Timestamp']).apply(lambda x: x.date())
-df["time"] = pd.to_datetime(df['Timestamp'], unit='s').apply(lambda x: x.time())
+df["time"] = pd.to_datetime(df['Timestamp']).apply(lambda x: x.time())
 
 
 #df["date"].tail(1)
