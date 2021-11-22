@@ -54,7 +54,8 @@ if selection == "Diaper changes":
     st.markdown("### 🧷 Diaper Pattern")
     st.table(df[df["Diaper"] != "not reported"][["date","Diaper", "Diaper change time"]].tail(nEntriesDiaper))
     st.markdown("#### Number of diaper changes (since beginning)")
-    g2 = df.groupby("date")["Diaper"].count().reset_index() 
+    dfDiaper = df[df["Diaper"] != "not reported"][["date", "Diaper"]]
+    g2 = dfDiaper.groupby("date").count().reset_index()
     st.table(g2.tail(nEntriesDiaper))
 
     col1, col2, col3 = st.columns(3)
