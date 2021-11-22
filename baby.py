@@ -44,6 +44,9 @@ st.table(df[df["Feeding"] != "not reported"][["date", "Feeding start time", "Fee
 st.markdown("#### Number of feedings")
 st.table(df.groupby("date")["Feeding"].count())
 
+st.markdown("#### Percentage of breast milk feeding (number)")
+st.write((1 - df[df["Feeding"] == "Bottle -- formula"]["Feeding"].count()/len(df))*100)
+
 
 st.markdown("### Diaper Pattern")
 st.table(df[df["Diaper"] != "not reported"][["date","Diaper", "Diaper change time"]])
