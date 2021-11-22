@@ -38,6 +38,7 @@ selection = st.sidebar.radio('Select ', ["Tables", "Charts"])
 
 
 if selection == "Charts":
+    st.markdown("Charts go here.")
     #st.markdown("Baby data is reported via charts on this page.")
     #st.markdown("### Feeding Pattern")
     #st.table(df["Feeding"])
