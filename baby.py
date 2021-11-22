@@ -52,6 +52,8 @@ if selection == "Diaper changes":
     nEntriesDiaper = st.slider('How many entries to show', 0, len(df))
     st.markdown("### 🧷 Diaper Pattern")
     st.table(df[df["Diaper"] != "not reported"][["date","Diaper", "Diaper change time"]].tail(nEntriesDiaper))
+    st.markdown("#### Number of diaper changes (since beginning)")
+    st.table(df.groupby("date")["Diaper"].count())
 
     col1, col2, col3 = st.columns(3)
     with col1:
