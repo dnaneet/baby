@@ -49,7 +49,7 @@ if selection == "Feeding":
 
     st.markdown("#### Percentage of breast milk feeding (number) (since beginning)")
     st.write(np.round((1 - df[df["Feeding"] == "Bottle -- formula"]["Feeding"].count()/len(df))*100))
-if selection == "Diaper changes":
+elif selection == "Diaper changes":
     nEntriesDiaper = st.slider('How many entries to show', 0, len(df))
     st.markdown("### 🧷 Diaper Pattern")
     st.table(df[df["Diaper"] != "not reported"][["date","Diaper", "Diaper change time"]].tail(nEntriesDiaper))
@@ -69,7 +69,7 @@ if selection == "Diaper changes":
     with col3:
         st.markdown("Percentage of Wet and Poopy diapers (since beginning)")
         st.write(100*df[df["Diaper"] == "Both"]["Diaper"].count()/nTotalDiaperChanges)
-if selection == "Query":
+elif selection == "Query":
     sb1 = st.selectbox("Select start date of interest", np.unique(df["date"]))      
     sb2 = st.selectbox("Select end date of interest", np.unique(df["date"]))
     st.write(str(sb1))    
@@ -77,7 +77,7 @@ if selection == "Query":
     st.table(df[df["Diaper"] != "not reported"][["date","Diaper", "Diaper change time"]].tail(nEntriesDiaper))
 
 
-    
+
 #if selection == "Charts":
     #st.markdown("Charts go here.")
     #st.markdown("Baby data is reported via charts on this page.")
