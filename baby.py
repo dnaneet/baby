@@ -48,7 +48,7 @@ if selection == "Feeding":
     st.table(g1.tail(nEntriesFeeding))
 
     st.markdown("#### Percentage of breast milk feeding (number) (since beginning)")
-    st.write((1 - df[df["Feeding"] == "Bottle -- formula"]["Feeding"].count()/len(df))*100)
+    st.write(np.round((1 - df[df["Feeding"] == "Bottle -- formula"]["Feeding"].count()/len(df))*100),2)
 if selection == "Diaper changes":
     nEntriesDiaper = st.slider('How many entries to show', 0, len(df))
     st.markdown("### 🧷 Diaper Pattern")
