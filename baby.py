@@ -63,13 +63,13 @@ elif selection == "Diaper changes":
     col1, col2, col3 = st.columns(3)
     with col1:
         st.markdown("Percentage of Wet diapers (since beginning)")
-        st.write(100*df[df["Diaper"] == "Wet"]["Diaper"].count()/nTotalDiaperChanges)
+        st.write(np.round(100*df[df["Diaper"] == "Wet"]["Diaper"].count()/nTotalDiaperChanges))
     with col2:
         st.markdown("Percentage of Poopy diapers (since beginning)")
-        st.write(100 - 100*df[df["Diaper"] == "Wet"]["Diaper"].count()/nTotalDiaperChanges)
+        st.write(np.round(100 - 100*df[df["Diaper"] == "Wet"]["Diaper"].count()/nTotalDiaperChanges))
     with col3:
         st.markdown("Percentage of Wet and Poopy diapers (since beginning)")
-        st.write(100*df[df["Diaper"] == "Both"]["Diaper"].count()/nTotalDiaperChanges)
+        st.write(np.round(100*df[df["Diaper"] == "Both"]["Diaper"].count()/nTotalDiaperChanges))
 elif selection == "Query":
     sb1 = st.selectbox("Select start date of interest", np.unique(df["date"]))      
     sb2 = st.selectbox("Select end date of interest", np.unique(df["date"]))
