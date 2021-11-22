@@ -42,7 +42,7 @@ st.markdown("### Feeding Pattern")
 st.table(df[df["Feeding"] != "not reported"][["date", "Feeding start time", "Feeding end time", "Feeding", "Feeding Volume [Oz] (approximate)"]].tail(5))
 
 st.markdown("### Diaper Pattern")
-st.table(df[["date", "Diaper change time", "Diaper"]])
+st.table(df[df["Diaper"] != "not reported"][["date","Diaper", "Diaper change time"]])
 
 #if selection == "Charts":
     #st.markdown("Charts go here.")
