@@ -52,12 +52,17 @@ if selection == "Diaper changes":
     nEntriesDiaper = st.slider('How many entries to show', 0, len(df))
     st.markdown("### Diaper Pattern")
     st.table(df[df["Diaper"] != "not reported"][["date","Diaper", "Diaper change time"]].tail(nEntriesDiaper))
-    st.markdown("#### Percentage of Wet diapers (since beginning)")
-    st.write(100*df[df["Diaper"] == "Wet"]["Diaper"].count()/len(df))
-    st.markdown("#### Percentage of Poopy diapers (since beginning)")
-    st.write(100 - 100*df[df["Diaper"] == "Wet"]["Diaper"].count()/len(df))
-    st.markdown("#### Percentage of Wet and Poopy diapers (since beginning)")
-    st.write(100*df[df["Diaper"] == "Both"]["Diaper"].count()/len(df))
+
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        st.markdown("#### Percentage of Wet diapers (since beginning)")
+        st.write(100*df[df["Diaper"] == "Wet"]["Diaper"].count()/len(df))
+    with col2:
+        st.markdown("#### Percentage of Poopy diapers (since beginning)")
+        st.write(100 - 100*df[df["Diaper"] == "Wet"]["Diaper"].count()/len(df))
+    with col3:
+        st.markdown("#### Percentage of Wet and Poopy diapers (since beginning)")
+        st.write(100*df[df["Diaper"] == "Both"]["Diaper"].count()/len(df))
 #if selection == "Charts":
     #st.markdown("Charts go here.")
     #st.markdown("Baby data is reported via charts on this page.")
