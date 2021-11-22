@@ -34,11 +34,18 @@ df["date"] = pd.to_datetime(df['Timestamp']).apply(lambda x: x.date())
 
 
 st.title("Baby Reporting")
-selection = st.sidebar.radio('Select ', ["Tables", "Charts"])
+#selection = st.sidebar.radio('Select ', ["Tables", "Charts"])
 
 
-if selection == "Charts":
-    st.markdown("Charts go here.")
+st.markdown("Baby data is reported via tables on this page.")
+st.markdown("### Feeding Pattern")
+st.table(df[["date", "Feeding start time", "Feeding"]])
+
+st.markdown("### Diaper Pattern")
+st.table(df[["date", "Diaper change time", "Diaper"]])
+
+#if selection == "Charts":
+    #st.markdown("Charts go here.")
     #st.markdown("Baby data is reported via charts on this page.")
     #st.markdown("### Feeding Pattern")
     #st.table(df["Feeding"])
@@ -52,11 +59,11 @@ if selection == "Charts":
     #fig = px.scatter(df, x = "Timestamp", y = "Diaper", hover_data = ["Diaper",]) #, size = "Enrollment", color = "Course"
     #fig.update_yaxes(range=[0,3])
     #st.plotly_chart(fig)
-if selection == "Tables":
-    st.markdown("Baby data is reported via tables on this page.")
-    st.markdown("### Feeding Pattern")
-    st.table(df[["date", "Feeding start time", "Feeding"]])
+#if selection == "Tables":
+    #st.markdown("Baby data is reported via tables on this page.")
+    #st.markdown("### Feeding Pattern")
+    #st.table(df[["date", "Feeding start time", "Feeding"]])
 
-    st.markdown("### Diaper Pattern")
-    st.table(df[["date", "Diaper change time", "Diaper"]])
+    #st.markdown("### Diaper Pattern")
+    #st.table(df[["date", "Diaper change time", "Diaper"]])
 
