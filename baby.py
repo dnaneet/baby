@@ -34,7 +34,7 @@ df["date"] = pd.to_datetime(df['Timestamp']).apply(lambda x: x.date())
 
 
 st.title("👶 Baby Reporting 📋")
-selection = st.sidebar.radio('Select ', ["Feeding", "Diaper changes"])
+selection = st.sidebar.radio('Select ', ["Feeding", "Diaper changes", "Query"])
 
 
 #st.markdown("Baby data is reported via tables on this page.")
@@ -69,6 +69,8 @@ if selection == "Diaper changes":
     with col3:
         st.markdown("Percentage of Wet and Poopy diapers (since beginning)")
         st.write(100*df[df["Diaper"] == "Both"]["Diaper"].count()/nTotalDiaperChanges)
+if selection == "Query":
+    sb = st.selectbox("Select date of interest", np.unique(df["date"]))        
 #if selection == "Charts":
     #st.markdown("Charts go here.")
     #st.markdown("Baby data is reported via charts on this page.")
