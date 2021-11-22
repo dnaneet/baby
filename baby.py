@@ -39,7 +39,7 @@ st.title("Baby Reporting")
 
 st.markdown("Baby data is reported via tables on this page.")
 st.markdown("### Feeding Pattern")
-st.table(df[["date", "Feeding start time", "Feeding"]])
+st.table(df[df["Feeding" != "not reported"]][["date", "Feeding start time", "Feeding"]])
 
 st.markdown("### Diaper Pattern")
 st.table(df[["date", "Diaper change time", "Diaper"]])
