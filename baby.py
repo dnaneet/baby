@@ -39,9 +39,9 @@ selection = st.sidebar.radio('Select ', ["Feeding", "Diaper changes"])
 
 st.markdown("Baby data is reported via tables on this page.")
 if selection == "Feeding":
-    nEntries = st.slider('How many entries to show', 0, len(df))
+    nEntriesFeeding = st.slider('How many entries to show', 0, len(df))
     st.markdown("### Feeding Pattern (last 'n' entries)")
-    st.table(df[df["Feeding"] != "not reported"][["date", "Feeding start time", "Feeding end time", "Feeding", "Feeding Volume [Oz] (approximate)"]].tail(nEntries))
+    st.table(df[df["Feeding"] != "not reported"][["date", "Feeding start time", "Feeding end time", "Feeding", "Feeding Volume [Oz] (approximate)"]].tail(nEntriesFeeding))
 
     st.markdown("#### Number of feedings")
     st.table(df.groupby("date")["Feeding"].count())
@@ -49,8 +49,9 @@ if selection == "Feeding":
     st.markdown("#### Percentage of breast milk feeding (number)")
     st.write((1 - df[df["Feeding"] == "Bottle -- formula"]["Feeding"].count()/len(df))*100)
 if selection == "Diaper changes":
+    nEntriesDiaper = st.slider('How many entries to show', 0, len(df))
     st.markdown("### Diaper Pattern")
-    st.table(df[df["Diaper"] != "not reported"][["date","Diaper", "Diaper change time"]])
+    st.table(df[df["Diaper"] != "not reported"][["date","Diaper", "Diaper change time"]].tail(nEntriesDiaper))
 
 #if selection == "Charts":
     #st.markdown("Charts go here.")
