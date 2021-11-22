@@ -55,7 +55,7 @@ if selection == "Diaper changes":
     st.markdown("#### Percentage of Wet diapers (since beginning)")
     st.write(100*df[df["Diaper"] == "Wet"]["Diaper"].count()/len(df))
     st.markdown("#### Percentage of Poopy diapers (since beginning)")
-    st.write(1 - 100*df[df["Diaper"] == "Wet"]["Diaper"].count()/len(df))
+    st.write(100 - 100*df[df["Diaper"] == "Wet"]["Diaper"].count()/len(df))
     st.markdown("#### Percentage of Wet and Poopy diapers (since beginning)")
     st.write(100*df[df["Diaper"] == "Both"]["Diaper"].count()/len(df))
 #if selection == "Charts":
