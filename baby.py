@@ -58,16 +58,17 @@ if selection == "Diaper changes":
     g2 = dfDiaper.groupby("date").count().reset_index()
     st.table(g2.tail(nEntriesDiaper))
 
+    nTotalDiaperChanges = len(df[(df["Diaper"] == "Wet") | (df["Diaper"] == "Poop") | (df["Diaper"] == "Both")])
     col1, col2, col3 = st.columns(3)
     with col1:
         st.markdown("Percentage of Wet diapers (since beginning)")
-        st.write(100*df[df["Diaper"] == "Wet"]["Diaper"].count()/len(df))
+        st.write(100*df[df["Diaper"] == "Wet"]["Diaper"].count()/nTotalDiaperChanges)
     with col2:
         st.markdown("Percentage of Poopy diapers (since beginning)")
-        st.write(100 - 100*df[df["Diaper"] == "Wet"]["Diaper"].count()/len(df))
+        st.write(100 - 100*df[df["Diaper"] == "Wet"]["Diaper"].count()/nTotalDiaperChanges)
     with col3:
         st.markdown("Percentage of Wet and Poopy diapers (since beginning)")
-        st.write(100*df[df["Diaper"] == "Both"]["Diaper"].count()/len(df))
+        st.write(100*df[df["Diaper"] == "Both"]["Diaper"].count()/nTotalDiaperChanges)
 #if selection == "Charts":
     #st.markdown("Charts go here.")
     #st.markdown("Baby data is reported via charts on this page.")
