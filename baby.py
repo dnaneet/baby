@@ -53,7 +53,7 @@ if selection == "Feeding":
 elif selection == "Diaper changes":
     #nEntriesDiaper = st.slider('How many entries to show', 0, len(df))
     st.markdown("### 🧷 Diaper Pattern")
-    st.table(df[df["Diaper"] != "not reported"][["date","Diaper", "Diaper change time"]].tail(nEntriesDiaper))
+    st.table(df[df["Diaper"] != "not reported"][["date","Diaper", "Diaper change time"]].tail(nEntries))
     st.markdown("#### Number of diaper changes (since beginning)")
     dfDiaper = df[df["Diaper"] != "not reported"][["date", "Diaper"]]
     g2 = dfDiaper.groupby("date").count().reset_index()
