@@ -47,7 +47,7 @@ if selection == "Feeding":
 
     st.markdown("#### Percentage of breast milk feeding (number)")
     st.write((1 - df[df["Feeding"] == "Bottle -- formula"]["Feeding"].count()/len(df))*100)
-if selection = "Diaper changes":
+if selection == "Diaper changes":
     st.markdown("### Diaper Pattern")
     st.table(df[df["Diaper"] != "not reported"][["date","Diaper", "Diaper change time"]])
 
