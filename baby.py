@@ -75,6 +75,9 @@ if selection == "Query":
     st.write(str(sb1))    
     #st.table(df[df["date"] == sb1]) 
     st.table(df[df["Diaper"] != "not reported"][["date","Diaper", "Diaper change time"]].tail(nEntriesDiaper))
+
+
+    
 #if selection == "Charts":
     #st.markdown("Charts go here.")
     #st.markdown("Baby data is reported via charts on this page.")
