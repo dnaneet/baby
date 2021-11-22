@@ -38,8 +38,12 @@ st.title("Baby Reporting")
 
 
 st.markdown("Baby data is reported via tables on this page.")
-st.markdown("### Feeding Pattern")
+st.markdown("### Feeding Pattern (last 5 entries)")
 st.table(df[df["Feeding"] != "not reported"][["date", "Feeding start time", "Feeding end time", "Feeding", "Feeding Volume [Oz] (approximate)"]].tail(5))
+
+st.markdown("#### Number of feedings")
+st.table(df.groupby("date")["Feeding"].count())
+
 
 st.markdown("### Diaper Pattern")
 st.table(df[df["Diaper"] != "not reported"][["date","Diaper", "Diaper change time"]])
