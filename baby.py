@@ -72,7 +72,7 @@ if selection == "Diaper changes":
 if selection == "Query":
     sb1 = st.selectbox("Select start date of interest", np.unique(df["date"]))      
     sb2 = st.selectbox("Select end date of interest", np.unique(df["date"]))
-    st.table(df[["date", "Feeding","Feeding Volume [Oz] (approximate)", "Diaper"]])
+    st.table(df)
       
 #if selection == "Charts":
     #st.markdown("Charts go here.")
