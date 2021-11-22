@@ -72,9 +72,10 @@ elif selection == "Diaper changes":
 elif selection == "Query":
     sb1 = st.selectbox("Select start date of interest", np.unique(df["date"]))      
     sb2 = st.selectbox("Select end date of interest", np.unique(df["date"]))
-    st.write(str(sb1))    
+    st.markdown("## 🚧 This tab is under construction 🚧")
+    #st.write(str(sb1))    
     #st.table(df[df["date"] == sb1]) 
-    st.table(df[df["Diaper"] != "not reported"][["date","Diaper", "Diaper change time"]].tail(nEntriesDiaper))
+    #st.table(df[df["Diaper"] != "not reported"][["date","Diaper", "Diaper change time"]].tail(nEntriesDiaper))
 
 
 
