@@ -35,13 +35,14 @@ df["date"] = pd.to_datetime(df['Timestamp']).apply(lambda x: x.date())
 
 st.title("👶 Baby Reporting 📋")
 selection = st.sidebar.radio('Select ', ["Feeding", "Diaper changes", "Query"])
+nEntries = st.sidebar.slider('How many entries to show', 0, len(df))
 
 
 #st.markdown("Baby data is reported via tables on this page.")
 if selection == "Feeding":
-    nEntriesFeeding = st.slider('How many entries to show', 0, len(df))
+    #nEntriesFeeding = st.slider('How many entries to show', 0, len(df))
     st.markdown("### 🍼 Feeding Pattern (last 'n' entries)")
-    st.table(df[df["Feeding"] != "not reported"][["date", "Feeding start time", "Feeding end time", "Feeding", "Feeding Volume [Oz] (approximate)"]].tail(nEntriesFeeding))
+    st.table(df[df["Feeding"] != "not reported"][["date", "Feeding start time", "Feeding end time", "Feeding", "Feeding Volume [Oz] (approximate)"]].tail(nEntries))
 
     st.markdown("#### Number of feedings (since beginning)")
     g1 = df.groupby("date")["Feeding"].count().reset_index() 
@@ -50,13 +51,13 @@ if selection == "Feeding":
     st.markdown("#### Percentage of breast milk feeding (number) (since beginning)")
     st.write(np.round((1 - df[df["Feeding"] == "Bottle -- formula"]["Feeding"].count()/len(df))*100))
 elif selection == "Diaper changes":
-    nEntriesDiaper = st.slider('How many entries to show', 0, len(df))
+    #nEntriesDiaper = st.slider('How many entries to show', 0, len(df))
     st.markdown("### 🧷 Diaper Pattern")
     st.table(df[df["Diaper"] != "not reported"][["date","Diaper", "Diaper change time"]].tail(nEntriesDiaper))
     st.markdown("#### Number of diaper changes (since beginning)")
     dfDiaper = df[df["Diaper"] != "not reported"][["date", "Diaper"]]
     g2 = dfDiaper.groupby("date").count().reset_index()
-    st.table(g2.tail(nEntriesDiaper))
+    st.table(g2.tail(nEntries))
 
     nTotalDiaperChanges = len(df[(df["Diaper"] == "Wet") | (df["Diaper"] == "Poop") | (df["Diaper"] == "Both")])
     col1, col2, col3 = st.columns(3)
