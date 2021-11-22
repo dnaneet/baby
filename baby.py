@@ -37,7 +37,7 @@ st.title("👶 Baby Reporting 📋")
 selection = st.sidebar.radio('Select ', ["Feeding", "Diaper changes"])
 
 
-st.markdown("Baby data is reported via tables on this page.")
+#st.markdown("Baby data is reported via tables on this page.")
 if selection == "Feeding":
     nEntriesFeeding = st.slider('How many entries to show', 0, len(df))
     st.markdown("### 🍼 Feeding Pattern (last 'n' entries)")
