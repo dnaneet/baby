@@ -46,7 +46,7 @@ if selection == "Feeding":
 
     st.markdown("#### Number of feedings (since beginning)")
     g1 = df.groupby("date")["Feeding"].count().reset_index() 
-    st.table(g1.tail(nEntriesFeeding))
+    st.table(g1.tail(nEntries))
 
     st.markdown("#### Percentage of breast milk feeding (number) (since beginning)")
     st.write(np.round((1 - df[df["Feeding"] == "Bottle -- formula"]["Feeding"].count()/len(df))*100))
