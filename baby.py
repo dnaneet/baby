@@ -39,8 +39,9 @@ selection = st.sidebar.radio('Select ', ["Feeding", "Diaper changes"])
 
 st.markdown("Baby data is reported via tables on this page.")
 if selection == "Feeding":
-    st.markdown("### Feeding Pattern (last 5 entries)")
-    st.table(df[df["Feeding"] != "not reported"][["date", "Feeding start time", "Feeding end time", "Feeding", "Feeding Volume [Oz] (approximate)"]].tail(5))
+    nEntries = st.slider('How many entries to show', 0, len(df))
+    st.markdown("### Feeding Pattern (last 'n' entries)")
+    st.table(df[df["Feeding"] != "not reported"][["date", "Feeding start time", "Feeding end time", "Feeding", "Feeding Volume [Oz] (approximate)"]].tail(nEntries))
 
     st.markdown("#### Number of feedings")
     st.table(df.groupby("date")["Feeding"].count())
