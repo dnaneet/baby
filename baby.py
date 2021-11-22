@@ -34,22 +34,22 @@ df["date"] = pd.to_datetime(df['Timestamp']).apply(lambda x: x.date())
 
 
 st.title("Baby Reporting")
-#selection = st.sidebar.radio('Select ', ["Tables", "Charts"])
+selection = st.sidebar.radio('Select ', ["Feeding", "Diaper changes"])
 
 
 st.markdown("Baby data is reported via tables on this page.")
-st.markdown("### Feeding Pattern (last 5 entries)")
-st.table(df[df["Feeding"] != "not reported"][["date", "Feeding start time", "Feeding end time", "Feeding", "Feeding Volume [Oz] (approximate)"]].tail(5))
+if selection == "Feeding":
+    st.markdown("### Feeding Pattern (last 5 entries)")
+    st.table(df[df["Feeding"] != "not reported"][["date", "Feeding start time", "Feeding end time", "Feeding", "Feeding Volume [Oz] (approximate)"]].tail(5))
 
-st.markdown("#### Number of feedings")
-st.table(df.groupby("date")["Feeding"].count())
+    st.markdown("#### Number of feedings")
+    st.table(df.groupby("date")["Feeding"].count())
 
-st.markdown("#### Percentage of breast milk feeding (number)")
-st.write((1 - df[df["Feeding"] == "Bottle -- formula"]["Feeding"].count()/len(df))*100)
-
-
-st.markdown("### Diaper Pattern")
-st.table(df[df["Diaper"] != "not reported"][["date","Diaper", "Diaper change time"]])
+    st.markdown("#### Percentage of breast milk feeding (number)")
+    st.write((1 - df[df["Feeding"] == "Bottle -- formula"]["Feeding"].count()/len(df))*100)
+if selection = "Diaper changes":
+    st.markdown("### Diaper Pattern")
+    st.table(df[df["Diaper"] != "not reported"][["date","Diaper", "Diaper change time"]])
 
 #if selection == "Charts":
     #st.markdown("Charts go here.")
