@@ -42,7 +42,7 @@ nEntries = st.sidebar.slider('How many entries to show', 0, len(df))
 if selection == "Feeding":
     #nEntriesFeeding = st.slider('How many entries to show', 0, len(df))
     st.markdown("### 🍼 Feeding Pattern (last 'n' entries)")
-    st.table(df[df["Feeding"] != "not reported"][["date", "Feeding start time", "Feeding end time", "Feeding", "Feeding Volume [Oz] (approximate)"]].tail(nEntries))
+    st.table(df[df["Feeding"] != "not reported"][["date", "Feeding start time", "Feeding end time", "Feeding"]].tail(nEntries))
 
     st.markdown("#### Number of feedings (since beginning)")
     g1 = df.groupby("date")["Feeding"].count().reset_index() 
