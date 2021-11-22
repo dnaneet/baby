@@ -70,7 +70,10 @@ if selection == "Diaper changes":
         st.markdown("Percentage of Wet and Poopy diapers (since beginning)")
         st.write(100*df[df["Diaper"] == "Both"]["Diaper"].count()/nTotalDiaperChanges)
 if selection == "Query":
-    sb = st.selectbox("Select date of interest", np.unique(df["date"]))        
+    sb1 = st.selectbox("Select start date of interest", np.unique(df["date"]))      
+    sb2 = st.selectbox("Select end date of interest", np.unique(df["date"]))
+    st.table(df[(df["date"] == "11/21/2021") | (df["date"] == "11/22/2021")])
+      
 #if selection == "Charts":
     #st.markdown("Charts go here.")
     #st.markdown("Baby data is reported via charts on this page.")
