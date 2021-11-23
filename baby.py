@@ -27,6 +27,8 @@ df["Diaper change time"] = df["Diaper change time"].fillna("not reported")
 df["Most recently used breast"] = df["Most recently used breast"].fillna("not reported")
 #df["date"] = pd.to_datetime(df['Timestamp']).apply(lambda x: x.date())
 df["date"] = pd.to_datetime(df['Timestamp']).apply(lambda x: x.date())
+df["datestring"] = df["date"].apply(lambda x: x.strftime('%Y-%m-%d'))
+
 #df["time"] = pd.to_datetime(df['Feeding start time']).apply(lambda x: x.time())
 
 
@@ -81,15 +83,15 @@ elif selection == "Diaper changes":
         st.markdown("Percentage of Wet and Poopy diapers (since beginning)")
         st.write(np.round(100*df[df["Diaper"] == "Both"]["Diaper"].count()/nTotalDiaperChanges))
 elif selection == "Query":
-    sb1 = st.selectbox("Select start date of interest", np.unique(df["date"]))      
-    sb2 = st.selectbox("Select end date of interest", np.unique(df["date"]))
+    sb1 = st.selectbox("Select start date of interest", np.unique(df["datestring"]))      
+    sb2 = st.selectbox("Select end date of interest", np.unique(df["datestring"]))
     st.markdown("## 🚧 This tab is under construction 🚧")
-    #st.write(str(sb1))    
-    #st.table(df[df["date"] == sb1]) 
-    #st.table(df[df["Diaper"] != "not reported"][["date","Diaper", "Diaper change time"]].tail(nEntriesDiaper))
-
-
-
+    st.write(sb1)
+    df_query = df[df["datestring"].between(sb1, sb2)].groupby("datestring").count().reset_index()
+    df_query["date"] = df["date"]
+    #df_query["Diaper"] = df["Diaper"]
+    st.table(df_query[["date", "Feeding"]])
+    #df[df["datestring"].between(sb1, sb2)][["date", "Feeding"]]
 #if selection == "Charts":
     #st.markdown("Charts go here.")
     #st.markdown("Baby data is reported via charts on this page.")
