@@ -55,7 +55,7 @@ if selection == "Feeding":
         st.markdown("Percentage of breast milk feeding (number) (since beginning)")
         st.write(np.round((1 - df[df["Feeding"] == "Bottle -- formula"]["Feeding"].count()/len(df))*100))
     with col2:
-        st.markdown("Last 'n' volumes fed (approximate)")
+        st.markdown("Last 'n' volumes fed (approximate, in Oz)")
         st.write(list(df["Feeding Volume [Oz] (approximate)"].tail(nEntries)))    
 elif selection == "Diaper changes":
     #nEntriesDiaper = st.slider('How many entries to show', 0, len(df))
