@@ -49,7 +49,7 @@ if selection == "Feeding":
     g1 = df.groupby("date")["Feeding"].count().reset_index() 
     st.table(g1.tail(nEntries))
     
-    col1, col2, col3 = st.columns(2)
+    col1, col2, col3 = st.columns(3)
 
     with col1:
         st.markdown("Percentage of breast milk feeding (number) (since beginning)")
@@ -59,7 +59,7 @@ if selection == "Feeding":
         st.write(list(df["Feeding Volume [Oz] (approximate)"].tail(nEntries)))  
     with col3:
         st.markdown("Most recently used breast:")
-        st.write(df[df['Most recently used breast'] != "not reported"]["Most recently used breast"].tail(1))     
+        st.write(list(df[df['Most recently used breast'] != "not reported"]["Most recently used breast"].tail(1)))     
 elif selection == "Diaper changes":
     #nEntriesDiaper = st.slider('How many entries to show', 0, len(df))
     st.markdown("### 🧷 Diaper Pattern")
