@@ -38,9 +38,9 @@ df["datestring"] = df["date"].apply(lambda x: x.strftime('%Y-%m-%d'))
 
 st.title("👶 Baby Reporting 📋")
 selection = st.sidebar.radio('Select ', ["Feeding", "Diaper changes", "Query"])
-nEntries = st.sidebar.slider('How many entries to show', 0, len(df))
+#nEntries = st.sidebar.slider('How many entries to show', 0, len(df))
 
-
+nEntries = 5;
 #st.markdown("Baby data is reported via tables on this page.")
 if selection == "Feeding":
     #nEntriesFeeding = st.slider('How many entries to show', 0, len(df))
