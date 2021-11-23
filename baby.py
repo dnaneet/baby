@@ -88,9 +88,9 @@ elif selection == "Query":
     st.markdown("## 🚧 This tab is under construction 🚧")
     st.write(sb1)
     df_query = df[df["datestring"].between(sb1, sb2)].groupby("datestring").count().reset_index()
-    df_query["date"] = df["date"]
+    #df_query["date"] = df[df["datestring"].between(sb1, sb2)]
     #df_query["Diaper"] = df["Diaper"]
-    st.table(df_query[["date", "Feeding"]])
+    st.table(df_query[ "Feeding"])
     #df[df["datestring"].between(sb1, sb2)][["date", "Feeding"]]
 #if selection == "Charts":
     #st.markdown("Charts go here.")
