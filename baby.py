@@ -61,7 +61,7 @@ if selection == "Feeding":
         st.write("Number of bottled breast-milk feeds", df[df["Feeding"] == "Bottle -- breast milk"]["Feeding"].count())
         st.write("Number of times nursed", df[df["Feeding"] == "Breast milk"]["Feeding"].count())
         #st.write("Percentage of breast-milk feeding", np.round(nFormulaFeedings/nTotalFeedings))
-        st.write("Percentage of breast-milk feeding since beginning", 100*(1 - nFormulaFeedings/nTotalFeedings))
+        st.write("Percentage of breast-milk feedings since beginning", 100*(1 - nFormulaFeedings/nTotalFeedings))
     with col2:
         st.markdown("Last 'n' volumes fed (approximate, in Oz)")
         st.write(list(df["Feeding Volume [Oz] (approximate)"].tail(nEntries)))  
