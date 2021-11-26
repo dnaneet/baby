@@ -57,7 +57,7 @@ if selection == "Feeding":
         #st.write(np.round((1 - df[(df["Feeding"] == "Bottle -- formula")]["Feeding"].count()/df[(df["Feeding"] == "Bottle -- formula") | (df["Feeding"] == "Bottle -- breast milk") | (df["Feeding"] == "Breast milk")]["Feeding"].count())
         #nTotalFeedings = df[(df["Feeding"] == "Bottle -- formula") | (df["Feeding"] == "Bottle -- breast milk") | (df["Feeding"] == "Breast milk")]["Feeding"].count()
         nFormula = df[df["Feeding"]=="Bottle -- formula"]["Feeding"].count()
-        nNursing = df[df["Feeding"]=="Bottle -- breast milk"]["Feeding"].count()
+        nNursing = df[df["Feeding"]=="Breast milk"]["Feeding"].count()
         nBottleBreastMilk = df[df["Feeding"]=="Bottle -- breast milk"]["Feeding"].count()
         #nBreastMilkFeedings = df[(df["Feeding"] == "Bottle -- formula") | (df["Feeding"] == "Bottle -- breast milk")].count()
         st.write("Number of formula feeds", nFormula)
