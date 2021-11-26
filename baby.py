@@ -56,17 +56,13 @@ if selection == "Feeding":
     with col1:
         #st.write(np.round((1 - df[(df["Feeding"] == "Bottle -- formula")]["Feeding"].count()/df[(df["Feeding"] == "Bottle -- formula") | (df["Feeding"] == "Bottle -- breast milk") | (df["Feeding"] == "Breast milk")]["Feeding"].count())
         #nTotalFeedings = df[(df["Feeding"] == "Bottle -- formula") | (df["Feeding"] == "Bottle -- breast milk") | (df["Feeding"] == "Breast milk")]["Feeding"].count()
-        nTotalFeedings = df[df["Feeding"] != "not reported"].count()
-        nFormulaFeedings = df[(df["Feeding"] == "Bottle -- formula")]["Feeding"].count()
-        #nBreastMilkFeedings = df[(df["Feeding"] == "Bottle -- formula") | (df["Feeding"] == "Bottle -- breast milk")].count()
-        st.write("Number of formula feeds", df[df["Feeding"] == "Bottle -- formula"]["Feeding"].count())
-        st.write("Number of bottled breast-milk feeds", df[df["Feeding"] == "Bottle -- breast milk"]["Feeding"].count())
-        st.write("Number of times nursed", df[df["Feeding"] == "Breast milk"]["Feeding"].count())
-
         nFormula = df[df["Feeding"]=="Bottle -- formula"]["Feeding"].count()
         nNursing = df[df["Feeding"]=="Bottle -- breast milk"]["Feeding"].count()
         nBottleBreastMilk = df[df["Feeding"]=="Bottle -- breast milk"]["Feeding"].count()
-
+        #nBreastMilkFeedings = df[(df["Feeding"] == "Bottle -- formula") | (df["Feeding"] == "Bottle -- breast milk")].count()
+        st.write("Number of formula feeds", nFormula)
+        st.write("Number of bottled breast-milk feeds", nBottleBreastMilk)
+        st.write("Number of times nursed", nNursing)
         #st.write("Percentage of breast-milk feeding", np.round(nFormulaFeedings/nTotalFeedings))
         st.write("Percentage of breast-milk feedings since beginning", np.round(100*(nNursing + nBottleBreastMilk)/(nFormula + nNursing + nBottleBreastMilk)))
     with col2:
