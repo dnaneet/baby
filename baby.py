@@ -106,24 +106,29 @@ elif selection == "Query":
     VolumeFed = np.sum(df[df["datestring"].between(sb1, sb2)]["Feeding Volume [Oz] (approximate)"].replace(to_replace="not reported", value=0.0))
 
     df_bottle = df[df["datestring"].between(sb1, sb2)]
-    nBottleFeedsInDuration =df_bottle[(df_bottle["Feeding"] == "Bottle -- formula") | (df_bottle["Feeding"] == "Bottle -- breast milk")]["Feeding"].count();    
-    nFormulaFeedsInduration = df_bottle[df_bottle["Feeding"] == "Bottle -- formula"]["Feeding"].count()
-    nBreastMilkFeedingsInduration = df_bottle[df_bottle["Feeding"] == "Breast milk"]["Feeding"].count()
-      
-    col4, col5, col6 = st.columns(3)
-    with col4:
-        st.markdown("##### Approximate volume (oz.) fed in the duration selected:")
-        st.markdown("The section that follows reports **bottle feedings only**.  The baby has been fed both formula and pumped breast milk by bottle.")  
-        st.write(np.round(VolumeFed))
-    with col5:
-        st.markdown("##### Bottle Feeding distribution in the duration selected:")
-        st.write("**Total Number of bottle feeds**", nBottleFeedsInDuration) 
-        st.write("Number of Bottle --formula feeds", nFormulaFeedsInduration)
-        st.write("Number of Bottle -- breast milk feeds", nBottleFeedsInDuration - nFormulaFeedsInduration)   
-    with col6:
-        st.markdown("##### Number of breast feeding sessions in the duration selected")
-        #st.markdown("**Total number of breast feeding sessions:**")
-        st.write(nBreastMilkFeedingsInduration) 
+    n1 = df_bottle[df_bottle["Feeding"] == "Bottle -- formula"]["Feeding"].count()
+    n2 = df_bottle[df_bottle["Feeding"] == "Bottle -- Breast milk"]["Feeding"].count()
+    #n2 = np.array(df[df_bottle["Feeding"] == "Bottle -- breast milk"]["Feeding"].count())
+    #nBottleFeedsInDuration = n1 + n2
+    #nFormulaFeedsInduration = df_bottle[df_bottle["Feeding"] == "Bottle -- formula"]["Feeding"].count()
+    #nBreastMilkFeedingsInduration = df_bottle[df_bottle["Feeding"] == "Breast milk"]["Feeding"].count()
+    st.markdown("##### Approximate volume (oz.) fed in the duration selected:")
+    st.markdown("The section that follows reports **bottle feedings only**.  The baby has been fed both formula and pumped breast milk by bottle.")  
+    st.write(np.round(VolumeFed))
+    #col4, col5, col6 = st.columns(3)
+    #with col4:
+    #    st.markdown("##### Approximate volume (oz.) fed in the duration selected:")
+    #    st.markdown("The section that follows reports **bottle feedings only**.  The baby has been fed both formula and pumped breast milk by bottle.")  
+    #    st.write(np.round(VolumeFed))
+    #with col5:
+    #    st.markdown("##### Bottle Feeding distribution in the duration selected:")
+    #    st.write("**Total Number of bottle feeds**", nBottleFeedsInDuration) 
+    #    st.write("Number of Bottle --formula feeds", nFormulaFeedsInduration)
+    #    st.write("Number of Bottle -- breast milk feeds", nBottleFeedsInDuration - nFormulaFeedsInduration)   
+    #with col6:
+    #    st.markdown("##### Number of breast feeding sessions in the duration selected")
+    #    #st.markdown("**Total number of breast feeding sessions:**")
+    #    st.write(nBreastMilkFeedingsInduration) 
     
 
     #st.markdown("## 🚧 This tab has not yet been thoroughly debugged 🚧"")
